@@ -20,6 +20,9 @@ $products = [
  */
 echo '<div>商品一覧</div>';
 
+foreach($products as $key => $value){
+    echo "<div>","{$key}は{$value[0]}円で{$value[1]}個存在します。", "</div>";
+}
 
  
 /**
@@ -42,3 +45,11 @@ $cart = [
     'bed' => 2,
 ];
 echo '<div>商品購入</div>';
+foreach($cart as $key => $value){
+    echo "<div>", "{$key}を{$value}個ください。","</div>";
+    if($products[$key][1] >= $value){
+        echo "はい。ありがとうございます。";
+    }else{
+        echo "すいません。{$key}は{$value}個しかありません。";
+    }
+}

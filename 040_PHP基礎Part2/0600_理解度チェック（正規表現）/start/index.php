@@ -28,7 +28,13 @@
  * wd3-2132 -> NG
  * 124-56789 -> NG
  */
-
+$char = '124-56789';
+if(preg_match("/^\d{3}-\d{4}$/", $char, $result)){
+  echo 'OK';
+  print_r($result);
+} else {
+  echo 'NG';
+}
 
 /**
  * Email
@@ -39,9 +45,31 @@
  * example-0.00@ex.co.jp -> OK
  * example/0.00@ex.co.jp -> NG
  */
-
+$char = 'example000@gmail.com';
+if(preg_match("/^[\w.\-]+@[\w\-]+\.[\w\.\-]+$/", $char, $result)){
+  echo 'OK';
+  print_r($result);
+} else {
+  echo 'NG';
+}
 
 /**
  * HTML
  * 見出しタグ(h1~h6)の中身のみ取得してみよう。
  */
+$html = '<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>見出し１</h1>   
+    <h2>見出し２</h2>   
+    <h3>見出し３</h3>   
+    <header>ヘッダー</header>
+</body>
+</html>';
+
+if(preg_match_all("/<h[1-6]>(.+)<\/h[1-6]>/", $html, $result)){
+  print_r($result[count($result) - 1]);
+}

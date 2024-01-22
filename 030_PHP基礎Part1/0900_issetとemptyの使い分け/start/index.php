@@ -17,3 +17,9 @@
 
 $a = 0;
 $b = 1;
+var_dump(!isset($a));
+if(!isset($a) || $a == false){
+  echo 'true';
+}else{
+  echo 'false';
+}
