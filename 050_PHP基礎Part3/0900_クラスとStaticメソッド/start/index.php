@@ -7,6 +7,9 @@ class Person
     private $name;
     public $age;
 
+    // static public $whereTolive = 'Earth';
+    public const whereTolive = 'Earth';
+
     function __construct($name, $age)
     {
         $this->name = $name;
@@ -15,17 +18,19 @@ class Person
 
     function hello() {
         echo 'hello, ' . $this->name;
+        echo static::whereTolive;
         return $this;
     }
 
-    function bye() {
-        echo 'bye, ' . $this->name;
-        return $this;
+    static function bye() {
+        echo 'bye';
     }
 }
 
 $bob = new Person('Bob', 18);
-$bob->hello()->bye();
-
+// $bob->hello()->bye();
+$bob->hello();
+// Person::bye();
+// echo Person::$whereTolive;
 // $tim = new Person('Tim', 32);
 // $tim->hello();

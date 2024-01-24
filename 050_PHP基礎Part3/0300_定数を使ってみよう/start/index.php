@@ -1,5 +1,5 @@
 <?php
-if(true){
+if(!defined('TAX_RATE')){
+  define('TAX_RATE', 0.1);
 }
-define('TAX_RATE', 0.1);
 

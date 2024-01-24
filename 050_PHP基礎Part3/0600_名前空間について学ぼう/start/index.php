@@ -1,12 +1,18 @@
 <?php
-if(!defined('TAX_RATE')) {
-    define('TAX_RATE', 0.1);
-}
-    
-function with_tax($base_price, $tax_rate = TAX_RATE) {
-    $sum_price = $base_price + ($base_price * $tax_rate);
-    $sum_price = round($sum_price);
-    return $sum_price;
-}
+require 'lib.php';
+use function lib\with_tax;
+use const lib\sub\TAX_RATE;
 $price = with_tax(1000, 0.08);
+
+// echo TAX_RATE;
 echo $price;
+
+function my_echo(){
+
+}
+
+my_echo();
+
+class GlobalCls {
+
+}
