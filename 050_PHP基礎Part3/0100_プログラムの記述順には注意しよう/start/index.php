@@ -5,3 +5,5 @@ function counter($step = 1) {
     echo $num;
     return $num;
 }
+$num = 0;
+counter(2);

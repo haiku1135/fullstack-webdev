@@ -29,10 +29,14 @@ $student3 = 'hanako';
 function tenko($student, $is_absent = false){
   if($is_absent){
     echo "{$student}は出席しています。";
-  }else{
+  } else {
     echo "{$student}は欠席しています。";
   }
 }
+
+tenko($student1, true);
+tenko($student2, true);
+tenko($student3);
 
 /**
  * 問２：カウンター関数(counter)
@@ -57,5 +61,6 @@ function counter($step = 1){
   echo $num;
   return $num;
 }
+
 counter(2);
 counter(2);
