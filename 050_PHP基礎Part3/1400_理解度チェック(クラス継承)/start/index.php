@@ -28,20 +28,19 @@ class MyFileWriter
 
     function append($content)
     {
-        $this->content .= $this->format($content);
+        $this->content .= $content;
         return $this;
-    }
-    protected function format($content)
-    {
-        return $content;
     }
 
     function newline()
     {
-        $this->content .= PHP_EOL;
-        return $this;
+        return $this->format(PHP_EOL);
     }
 
+    function format($content)
+    {
+        return $content;
+    }
 
     function commit($flag = null)
     {
@@ -50,15 +49,21 @@ class MyFileWriter
         return $this;
     }
 }
-
 class LogWriter extends MyFileWriter{
-    protected function format($content)
-    {
+    function format($content){
+
         $time_str = date('Y/m/d H:i:s');
         return sprintf('%s %s', $time_str, $content);
+        
     }
-}
 
+}
+/*
+ヒント）
+文字列のフォーマット
+*/
+$time_str = date('Y/m/d H:i:s');
+sprintf('%s %s', $time_str, '文字列');
 
 $info = new LogWriter('info.log');
 $error = new LogWriter('error.log');
