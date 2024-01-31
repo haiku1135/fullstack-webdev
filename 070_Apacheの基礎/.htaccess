@@ -1,2 +1,12 @@
-DirectoryIndex file1.html
-Options -Indexes
+# DirectoryIndex file1.html
+# Options -Indexes
+
+RewriteEngine On
+
+# RewriteRule rewrite-test/index.html /apache/rewrite-test/tmp.html
+# RewriteRule rewrite-test/index.html - [F]
+RewriteBase /apache/rewrite-test/
+RewriteCond %{HTTP_HOST} ^localhost
+RewriteRule .? - [F]
+RewriteRule rewrite-test/imgs/(\d{3}).jpg imgs/$1.png
+RewriteRule rewrite-test/sub1/(.+\.html) sub2/$1
