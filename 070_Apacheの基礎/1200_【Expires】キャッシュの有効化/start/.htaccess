@@ -2,6 +2,12 @@
 
 # [ExpiresActive]
 # サーバ設定ファイル, バーチャルホスト, ディレクトリ, .htaccess
+<IfModule mod_expires.c>
+  ExpiresActive On
+  <FileMatch "\.(png|jpe?g|gif|css|js|html)$">
+    ExpiresDefault "access plus 2 week"
+  </FileMatch>
+</IfModule>
 
 # [ExpiresDefault]
 # サーバ設定ファイル, バーチャルホスト, ディレクトリ, .htaccess
