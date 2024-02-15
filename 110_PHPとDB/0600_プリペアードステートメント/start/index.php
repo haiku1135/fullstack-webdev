@@ -9,7 +9,6 @@
 
 <?php 
 if(isset($_POST['shop_id'])) {
-    
     $shop_id = $_POST['shop_id'];
 
     $user = 'test_user';
@@ -20,14 +19,23 @@ if(isset($_POST['shop_id'])) {
     $conn = new PDO($dsn, $user, $pwd);
     $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    try{
+        
+        $pst = $conn->prepare("select * from test_phpdb.mst_shops where id = :id;");
+        // $pst->bindValue(':id', $shop_id, PDO::PARAM_INT);
+        $pst->execute([
+            ':id' => $shop_id
+        ]);
+        $result = $pst->fetch();
     
-    $pst = $conn->prepare("select * from test_phpdb.mst_shops where id = :id;");
-    $pst->bindValue(':id', $shop_id, PDO::PARAM_INT);
-    $pst->execute();
-    $result = $pst->fetch();
-
-    if(count($result) > 0) {
-        echo "店舗名は[{$result['name']}]です。";
+        if(!empty($result) && count($result) > 0) {
+            echo "店舗名は[{$result['name']}]です。";
+        } else {
+            echo 'not store';
+        }
+    } catch(PDOException $e){
+        echo 'error occurred';
     }
 }
  ?>
