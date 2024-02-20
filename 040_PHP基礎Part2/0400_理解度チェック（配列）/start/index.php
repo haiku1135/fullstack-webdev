@@ -2,12 +2,7 @@
 /**
  * 商品名 => [価格, 在庫数]
  */
-$products = [
-    'table' => [1000, 2], 
-    'chair' => [500, 4],
-    'bed' => [10000, 1],
-    'light' => [5000, 1]
-];
+
 
 /**
  * 問１：商品一覧
@@ -18,11 +13,11 @@ $products = [
  * bedは10000円で2個存在します。
  * lightは5000円で1個存在します。
  */
-echo '<div>商品一覧</div>';
+// echo '<div>商品一覧</div>';
 
-foreach($products as $key => $value){
-    echo "<div>","{$key}は{$value[0]}円で{$value[1]}個存在します。", "</div>";
-}
+// foreach($products as $key => $val){
+//     echo "{$key}は{$val[0]}円で{$val[1]}個存在します。<br>";
+// }
 
  
 /**
@@ -40,16 +35,22 @@ foreach($products as $key => $value){
  */
 
 // 購入希望 商品数
+$products = [
+    'table' => [1000, 2], 
+    'chair' => [500, 4],
+    'bed' => [10000, 1],
+    'light' => [5000, 1]
+];
 $cart = [
     'table' => 1,
     'bed' => 2,
 ];
-echo '<div>商品購入</div>';
-foreach($cart as $key => $value){
-    echo "<div>", "{$key}を{$value}個ください。","</div>";
-    if($products[$key][1] >= $value){
-        echo "はい。ありがとうございます。";
-    }else{
-        echo "すいません。{$key}は{$value}個しかありません。";
+echo '<div>', '商品購入', '</div>';
+foreach($cart as $key => $val){
+    echo "{$key}を{$val}個ください。<br>";
+    if($products[$key][1] >= $val){
+        echo 'はい。ありがとうございます。<br>';
+    } else {
+        echo "すいません。{$key}は{$products[$key][1]}個しかありません。<br>";
     }
-}
+}  

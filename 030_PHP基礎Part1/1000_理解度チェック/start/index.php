@@ -14,13 +14,13 @@
  * 合計金額が0円の場合
  * 「何か商品を買いましょう。」と表示
  */
+$price = 50;
+$amount = 10;
 
- $price = 500;
- $amount = 10;
- $sum = $price * $amount;
+$sum = $price * $amount;
 
- if(isset($sum)){
+if(!empty($sum)){
   echo "{$price}円の商品を{$amount}個買ったので合計金額は{$sum}円です。";
- }else{
+} else {
   echo '何か商品を買いましょう。';
- }
+}
