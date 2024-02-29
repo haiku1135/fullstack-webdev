@@ -9,27 +9,7 @@
 
 
 class MyFileWriter{
-    private $filename;
-    private $content = '';
-    public const APPEND = FILE_APPEND;
 
-    public function __construct($filename)
-    {
-        $this->filename = $filename;
-    }
-
-    public function append($content){
-        $this->content .= $content;
-        return $this;
-    }
-    public function newline(){
-        return $this->append(PHP_EOL);
-    }
-    public function commit($flag = null){
-        file_put_contents($this->filename, $this->content, $flag);
-        $this->content = '';
-        return $this;
-    }
 }
 
 $file = new MyFileWriter('sample.txt');

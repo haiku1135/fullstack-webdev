@@ -17,37 +17,7 @@
  */
 class MyFileWriter
 {
-    private $filename;
-    private $content = '';
-    public const APPEND = FILE_APPEND;
 
-    function __construct($filename)
-    {
-        $this->filename = $filename;
-    }
-
-    function append($content)
-    {
-        $this->content .= $content;
-        return $this;
-    }
-
-    function newline()
-    {
-        return $this->format(PHP_EOL);
-    }
-
-    function format($content)
-    {
-        return $content;
-    }
-
-    function commit($flag = null)
-    {
-        file_put_contents($this->filename, $this->content, $flag);
-        $this->content = '';
-        return $this;
-    }
 }
 class LogWriter extends MyFileWriter{
     function format($content){
